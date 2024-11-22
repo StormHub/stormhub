@@ -10,32 +10,32 @@ categories: .NET AI
 # Add Azure Open AI first
 
 ```c#
-    services.AddHttpClient(nameof(AzureOpenAIClient));
-    services.AddTransient<AzureOpenAIClient>(provider =>
+services.AddHttpClient(nameof(AzureOpenAIClient));
+services.AddTransient<AzureOpenAIClient>(provider =>
+    {
+        var factory = provider.GetRequiredService<IHttpClientFactory>();
+        var httpClient = factory.CreateClient(nameof(AzureOpenAIClient));
+        var clientOptions = new AzureOpenAIClientOptions
         {
-            var factory = provider.GetRequiredService<IHttpClientFactory>();
-            var httpClient = factory.CreateClient(nameof(AzureOpenAIClient));
-            var clientOptions = new AzureOpenAIClientOptions
-            {
-                Transport = new HttpClientPipelineTransport(httpClient)
-            };
-                    
-           return new AzureOpenAIClient(new Uri(uri), new AzureKeyCredential(key), clientOptions);
-        });
+            Transport = new HttpClientPipelineTransport(httpClient)
+        };
+                 
+        return new AzureOpenAIClient(new Uri(uri), new AzureKeyCredential(key), clientOptions);
+     });
 ```
 
 # Setup for IChatClient
 ```c#
-    services.AddChatClient(builder =>
-        builder.Services.GetRequiredService<AzureOpenAIClient>()
-        .AsChatClient("gpt-4o"));
+services.AddChatClient(builder =>
+    builder.Services.GetRequiredService<AzureOpenAIClient>()
+    .AsChatClient("gpt-4o"));
 ```
 
 # Setup for IEmbeddingGenerator
 ```c#
-    services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
-        builder.Services.GetRequiredService<AzureOpenAIClient>()
-        .AsEmbeddingGenerator("text-embedding-ada-002", default));
+services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
+    builder.Services.GetRequiredService<AzureOpenAIClient>()
+    .AsEmbeddingGenerator("text-embedding-ada-002", default));
 ```
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-10-10/ConsoleApp)
