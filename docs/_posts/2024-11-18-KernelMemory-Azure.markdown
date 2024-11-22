@@ -2,7 +2,7 @@
 layout: post
 title:  "Kernel Memory with Azure"
 date:   2024-11-18 10:01:02 +1000
-categories: .NET AI Kernel Memory
+categories: .NET AI KernelMemory
 ---
 
 [Kernel Memory](https://github.com/microsoft/kernel-memory)
@@ -32,22 +32,23 @@ var builder = new KernelMemoryBuilder()
 # Azure storage account 
 Azure blob storage to store kenerl memory pipeline artifacts
 ```c#
-    var builder = new KernelMemoryBuilder()
-        .WithAzureBlobsDocumentStorage(
-            new AzureBlobsConfig
-            {
-                Account = "your-blob-storage-account",
-                Auth = AzureBlobsConfig.AuthTypes.AccountKey,
-                AccountKey = "your-blob-account-key",
-                Container = "document-ingestion"
-            })
+var builder = new KernelMemoryBuilder()
+    .WithAzureBlobsDocumentStorage(
+        new AzureBlobsConfig
+        {
+            Account = "your-blob-storage-account",
+            Auth = AzureBlobsConfig.AuthTypes.AccountKey,
+            AccountKey = "your-blob-account-key",
+            Container = "document-ingestion"
+        })
 ```
 
 # Azure AI Search service
 Azure AI search service as vector databases
 ```c#
 var builder = new KernelMemoryBuilder()
-    .WithAzureAISearchMemoryDb(new AzureAISearchConfig
+    .WithAzureAISearchMemoryDb(
+        new AzureAISearchConfig
         {
             Endpoint = "https://your-search-service-resource-name.search.windows.net",
             Auth = AzureAISearchConfig.AuthTypes.APIKey,
@@ -61,7 +62,6 @@ await kernelMemory.ImportDocumentAsync(
     filePath: "resources/earth_book_2019_tagged.pdf",
     documentId: "earth_book_2019",
     index: "books");
-
 
 var response =
     await kernelMemory.AskAsync(
