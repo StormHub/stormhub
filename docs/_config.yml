@@ -26,7 +26,7 @@ baseurl: "/stormhub" # the subpath of your site, e.g. /blog
 url: "https://stormhub.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  StormHub
 twitter_username: roamingcode
-google_analytics: GA-G-J120ZJW1XQ
+google_analytics: G-J120ZJW1XQ
 
 # Build settings
 theme: minima
