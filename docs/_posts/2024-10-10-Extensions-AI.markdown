@@ -3,10 +3,11 @@ layout: post
 title:  "Microsoft extension AI"
 date:   2024-10-10 12:01:02 +1000
 categories: .NET AI
+excerpt_separator: <!--more-->
 ---
 
-[Microsoft.Extensions.AI Preview](https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/)
-
+Setup for Azure OpenAI with [Microsoft.Extensions.AI](https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/).
+ 
 # Add Azure Open AI first
 
 ```c#
@@ -39,3 +40,5 @@ services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
 ```
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-10-10/ConsoleApp)
+
+<!--more-->

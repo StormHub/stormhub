@@ -3,8 +3,11 @@ layout: post
 title:  "TypeScript type prettier"
 date:   2024-09-30 09:08:58 +1000
 categories: TypeScript
+excerpt_separator: <!--more-->
 ---
-Reveal type from [Matt Pocock](https://twitter.com/mattpocockuk)
+
+TypeScript helper from [Matt Pocock](https://twitter.com/mattpocockuk) to reveal type details.
+
 
 ```typescript
 type ThemeMode = {
@@ -30,3 +33,6 @@ type Prettify<T> = {
 ```
 
 ![image](https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/prettier.png?raw=true)
+
+<!--more-->
+
