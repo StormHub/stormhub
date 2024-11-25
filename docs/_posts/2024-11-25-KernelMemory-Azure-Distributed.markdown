@@ -29,14 +29,13 @@ var builder = new KernelMemoryBuilder()
 Once queue orchestration is registered, Kernel Memory automatically sets up DistributedPipelineOrchestrator.
 
 # Make sure pipeline handler are hosted services.
-Azure blob storage to store kenerl memory pipeline artifacts
 ```c#
 // Add handlers as hosted services
 services.AddDefaultHandlersAsHostedServices();
 ```
 
-# Distributed ingestion also makes importing document asynchronous, meaning when ImportDocumentAsync returns, the document ingestion is enqueued to be processed. 
-
+# Import documents asynchronously
+Distributed ingestion also makes importing document asynchronous, meaning when ImportDocumentAsync returns, the document ingestion is enqueued to be processed. 
 ```c#
 await kernelMemory.ImportDocumentAsync(
     filePath: "resources/earth_book_2019_tagged.pdf",
