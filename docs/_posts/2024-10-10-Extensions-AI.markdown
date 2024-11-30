@@ -10,7 +10,7 @@ Setup for Azure OpenAI with [Microsoft.Extensions.AI](https://devblogs.microsoft
  
 # Add Azure Open AI first
 
-```c#
+```csharp
 services.AddHttpClient(nameof(AzureOpenAIClient));
 services.AddTransient<AzureOpenAIClient>(provider =>
     {
@@ -26,14 +26,14 @@ services.AddTransient<AzureOpenAIClient>(provider =>
 ```
 
 # Setup for IChatClient
-```c#
+```csharp
 services.AddChatClient(builder =>
     builder.Services.GetRequiredService<AzureOpenAIClient>()
     .AsChatClient("gpt-4o"));
 ```
 
 # Setup for IEmbeddingGenerator
-```c#
+```csharp
 services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
     builder.Services.GetRequiredService<AzureOpenAIClient>()
     .AsEmbeddingGenerator("text-embedding-ada-002", default));

@@ -15,7 +15,7 @@ Benifits of scaling document ingestion with [Kernel Memory](https://github.com/m
 - Flexibility: Adapt to varying workloads and scale up or down as needed.
 
 # Setup distributed pipeline ingestion with Azure Queue Storage
-```c#
+```csharp
 var builder = new KernelMemoryBuilder()
      .WithAzureQueuesOrchestration(
         new AzureQueuesConfig
@@ -29,14 +29,15 @@ var builder = new KernelMemoryBuilder()
 Once queue orchestration is registered, Kernel Memory automatically sets up DistributedPipelineOrchestrator.
 
 # Make sure pipeline handler are hosted services.
-```c#
+Add handlers as hosted service to start listen to messages
+```csharp
 // Add handlers as hosted services
 services.AddDefaultHandlersAsHostedServices();
 ```
 
 # Import documents asynchronously
 Distributed ingestion also makes importing document asynchronous, meaning when ImportDocumentAsync returns, the document ingestion is enqueued to be processed. 
-```c#
+```csharp
 await kernelMemory.ImportDocumentAsync(
     filePath: "resources/earth_book_2019_tagged.pdf",
     documentId: "earth_book_2019",

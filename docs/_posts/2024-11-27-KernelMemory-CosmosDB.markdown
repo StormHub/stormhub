@@ -15,7 +15,7 @@ It also means [Kernel Memory](https://github.com/microsoft/kernel-memory) can be
 # Implement IMemoryDb for kernel memory with cosmos client
 The key is [VectorDistance](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/query/vectordistance) function to match against embeddings.
 
-```c#
+```csharp
 var sql =
     $"""
     SELECT Top @topN

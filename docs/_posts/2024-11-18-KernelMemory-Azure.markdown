@@ -59,7 +59,7 @@ var builder = new KernelMemoryBuilder()
 ```
 
 # Import some document and ask questions
-```c#
+```csharp
 await kernelMemory.ImportDocumentAsync(
     filePath: "resources/earth_book_2019_tagged.pdf",
     documentId: "earth_book_2019",
