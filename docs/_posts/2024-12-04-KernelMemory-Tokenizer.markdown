@@ -11,6 +11,6 @@ Choosing the right tokenizer for in AI is crucial because it directly impacts th
 
 # My take away:
  - Always prefix your deployment name by the actual model name 
-   For example, for 'gpt-4o' model, the name should be prefix with 'gpt-4o-bot'
+   For example, for 'gpt-4o' model, the name should be prefix with model like this 'gpt-4o-bot'
 
  - Leave the 'tokenizer' parameter to default and let [Kernel Memory](https://github.com/microsoft/kernel-memory) pick one automatically.
