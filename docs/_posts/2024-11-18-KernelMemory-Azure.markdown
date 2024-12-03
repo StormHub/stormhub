@@ -9,6 +9,8 @@ excerpt_separator: <!--more-->
 Setup [Kernel Memory](https://github.com/microsoft/kernel-memory) with Azure OpenAI,
 Blob storage and AI Search.
 
+<!--more-->
+
 # Azure Open AI
 On AzureOpenAI resource, deploy gpt-4 chat completion model and text-embedding-ada-002 embedding model
 ```c#
@@ -74,5 +76,5 @@ var response =
 Note the index name "books", kernel memory automatically creates Azure AI Search index name "books" if it does not exist and "books" folder in the blob container.
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-18/ConsoleApp)
-<!--more-->
+
 

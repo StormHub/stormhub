@@ -7,7 +7,7 @@ excerpt_separator: <!--more-->
 ---
 
 TypeScript helper from [Matt Pocock](https://twitter.com/mattpocockuk) to reveal type details.
-
+<!--more-->
 
 ```typescript
 type ThemeMode = {
@@ -33,6 +33,3 @@ type Prettify<T> = {
 ```
 
 ![image](https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/prettier.png?raw=true)
-
-<!--more-->
-

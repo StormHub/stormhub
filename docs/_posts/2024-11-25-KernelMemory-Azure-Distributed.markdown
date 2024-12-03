@@ -6,7 +6,9 @@ categories: .NET AI KernelMemory
 excerpt_separator: <!--more-->
 ---
 
-Benifits of scaling document ingestion with [Kernel Memory](https://github.com/microsoft/kernel-memory) on Azure:
+Benifits of scaling document ingestion with [Kernel Memory](https://github.com/microsoft/kernel-memory) on Azure
+
+<!--more-->
 
 - Scalability: Easily handle large volumes of documents by distributing the workload across multiple nodes.
 - Efficiency: Process documents in parallel, reducing the overall time required for ingestion.
@@ -55,5 +57,5 @@ if (status is { Completed: true })
 It is also worth noting each of the pipeline step has independant queue/posion queue on Azure Queue Storage.
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-25/ConsoleApp)
-<!--more-->
+
 

@@ -12,6 +12,7 @@ It is less obvious that importing images requires IOcrEngine implementations for
 
 Kernel Memory only comes with [Azure AI Document Intelligence](https://azure.microsoft.com/products/ai-services/ai-document-intelligence) extension suppot. Here is an example of integrating [Azure Computer Vision](https://learn.microsoft.com/en-gb/azure/ai-services/computer-vision) into [Kernel Memory](https://github.com/microsoft/kernel-memory) document ingestion.
 
+<!--more-->
 
 # Create Azure Computer Vision resource.
 Note different Azure regions support different visual features such as Caption. Only Read required for this sample.
@@ -52,5 +53,5 @@ memoryBuilder.WithCustomImageOcr<AzureImageToText>();
 ```
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-30/ConsoleApp)
-<!--more-->
+
 

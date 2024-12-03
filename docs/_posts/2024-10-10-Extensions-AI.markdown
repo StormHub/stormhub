@@ -7,7 +7,9 @@ excerpt_separator: <!--more-->
 ---
 
 Setup for Azure OpenAI with [Microsoft.Extensions.AI](https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview/).
- 
+
+<!--more-->
+
 # Add Azure Open AI first
 
 ```csharp
@@ -41,4 +43,4 @@ services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-10-10/ConsoleApp)
 
-<!--more-->
+
