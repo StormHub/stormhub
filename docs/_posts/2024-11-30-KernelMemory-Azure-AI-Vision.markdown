@@ -39,7 +39,7 @@ public async Task<string> ExtractTextFromImageAsync(Stream imageContent, Cancell
         foreach (var line in block.Lines)
         {
           buffer.AppendLine(line.Text);
-          }
+        }
       }
     }
         
