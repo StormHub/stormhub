@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>6D414885-5F4F-439A-859B-5BC25800A280</UserSecretsId>
+        <NoWarn>KMEXP00</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="appsettings.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="appsettings.Development.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Azure.Identity" Version="1.13.1"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.KernelMemory.Abstractions" Version="0.94.241201.1" />
+        <PackageReference Include="Microsoft.KernelMemory.AI.AzureOpenAI" Version="0.94.241201.1" />
+        <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.94.241201.1" />
+
+        <PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.1-preview.1.24570.5" />
+        <PackageReference Include="Microsoft.Extensions.AI.Evaluation" Version="0.9.6-preview" />
+        <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Quality" Version="0.9.6-preview"/>
+        <PackageReference Include="Microsoft.Extensions.AI.Evaluation.Reporting" Version="0.9.6-preview"/>
+        <PackageReference Include="Microsoft.ML.Tokenizers" Version="1.0.0"/>
+        <PackageReference Include="Microsoft.ML.Tokenizers.Data.Cl100kBase" Version="1.0.0"/>
+        <PackageReference Include="Microsoft.ML.Tokenizers.Data.O200kBase" Version="1.0.0" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Content Include="resources/earth_book_2019_tagged.pdf" CopyToOutputDirectory="Always"/>
+    </ItemGroup>
+</Project>
