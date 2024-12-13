@@ -14,12 +14,11 @@ For quick and easy evaluation or comparison of AI responses in .NET applications
 Note that you need to setup semantic kernel with chat completion first. It is also recommended to set 'Temperature' to 0.
 
 ```csharp
-const string isThisFunny = "I am a brown fox";
 var json = 
     $$"""
     {
         "humor" : {
-            "output" : "{{isThisFunny}}"
+            "output" : "this maybe funny"
         }
     }
     """;
