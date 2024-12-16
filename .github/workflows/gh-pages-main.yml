@@ -37,7 +37,7 @@ jobs:
         run: |
           cd site
           echo "Building the site"
-          npm ci
+          npm install
           npm run build-ghpages
 
       - name : Upload artifact
