@@ -25,7 +25,7 @@ type Theme = ThemeMode & ThemeColor;
 ```
 
 For Theme type above, hover over it in VS Code, it does not actually drill into the actual type details.
-<img src="https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/type.png?raw=true" alt="VS code no types">
+<img eleventy:ignore src="https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/type.png?raw=true" alt="VS code no types">
 
 With the following helper
 
@@ -37,6 +37,6 @@ type Prettify<T> = {
 
 VS Code shows type details.
 
-<img src="https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/prettier.png?raw=true" alt="VS code with types">
+<img eleventy:ignore src="https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/prettier.png?raw=true" alt="VS code with types">
 
 
