@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "build-ghpages": "npx @11ty/eleventy --pathprefix=/stormhub/",
+    "build-ghpages": "npx @11ty/eleventy --pathprefix=/site/",
     "start": "npx @11ty/eleventy --serve --quiet",
     "debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy"
   },
