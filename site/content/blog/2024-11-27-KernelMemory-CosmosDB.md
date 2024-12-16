@@ -13,7 +13,7 @@ permalink: ".net/ai/kernelmemory/2024/11/27/KernelMemory-CosmosDB.html"
 Officially announced in Microsoft Build 2024, Cosmos DB for NoSQL now support vector search. It also means [Kernel Memory](https://github.com/microsoft/kernel-memory) can be integrated with Cosmos DB for NoSQL. 
 
 ## Enable Cosmos DB for NoSQL to support vector search.
-![image](https://github.com/StormHub/stormhub/blob/main/resources/2024-11-27/azure-cosmos-db.png?raw=true)
+<img src="https://github.com/StormHub/stormhub/blob/main/resources/2024-11-27/azure-cosmos-db.png?raw=true" alt="Azure CosmosDB configurations">
 
 ## Implement IMemoryDb for kernel memory with cosmos client
 The key is [VectorDistance](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/query/vectordistance) function to match against embeddings.
