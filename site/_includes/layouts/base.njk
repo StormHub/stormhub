@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+
+		{%- css %}{% include "public/css/5.3.0_dist_css_bootstrap.min.css" %}{% endcss %}
+		{%- css %}{% include "public/css/index.css" %}{% endcss %}
+		{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
+		{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
+
+		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+	</head>
+	<body class="h-100">
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+		<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+					<span class="fs-3" style="margin-right: 2rem;">{{ metadata.title }}</span>
+				</a>
+
+				<ul class="nav nav-underline me-2 pe-2">
+					<h2 class="visually-hidden">Top level navigation menu</h2>
+					{%- for entry in collections.all | eleventyNavigation %}
+					    {%- if page.url === entry.url or (entry.url !== "/" and page.url.startsWith(entry.url)) -%}
+							<li class="nav-item"><a class="nav-link active" href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+						{%- else -%}
+							<li class="nav-item"><a class="nav-link" href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+						{%- endif -%}
+					{%- endfor %}
+				</ul>
+			</header>
+
+			<main id="skip">
+				{{ content | safe }}
+			</main>
+
+		{% include "layouts/footer.njk" %}
+		</div>
+		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
+		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+		{% if metadata.googleAnalyticsId %}
+		<!-- Google tag (gtag.js) -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id={{ metadata.googleAnalyticsId }}"></script>
+			<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', '{{ metadata.googleAnalyticsId }}');
+			</script>
+		{% endif %}
+	</body>
+</html>
