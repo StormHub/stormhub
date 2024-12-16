@@ -35,8 +35,9 @@ type Prettify<T> = {
 } & {};
 ```
 
-VS Code shows type details.
-
+VS Code shows type details.  
 <img eleventy:ignore src="https://github.com/StormHub/stormhub/blob/main/resources/2024-09-30/prettier.png?raw=true" alt="VS code with types">
+
+
 
 

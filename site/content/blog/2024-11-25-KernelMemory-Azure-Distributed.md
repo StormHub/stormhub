@@ -56,8 +56,9 @@ if (status is { Completed: true })
 }
 ```
 
-It is also worth noting each of the pipeline step has independant queue/posion queue on Azure Queue Storage.
+It is also worth noting each of the pipeline step has independant queue/posion queue on Azure Queue Storage.  
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-25/ConsoleApp)
+
 
 

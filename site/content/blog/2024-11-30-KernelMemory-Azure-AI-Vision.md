@@ -57,5 +57,3 @@ memoryBuilder.WithCustomImageOcr<AzureImageToText>();
 ```
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-30/ConsoleApp)
-
-

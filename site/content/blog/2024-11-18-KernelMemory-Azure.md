@@ -80,3 +80,4 @@ Note the index name "books", kernel memory automatically creates Azure AI Search
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-18/ConsoleApp)
 
 
+

@@ -46,5 +46,3 @@ var feedIterator = _cosmosClient
 ```
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-27/ConsoleApp)
-
-

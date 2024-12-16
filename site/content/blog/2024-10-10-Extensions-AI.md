@@ -45,3 +45,4 @@ services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-10-10/ConsoleApp)
 
 
+
