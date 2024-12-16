@@ -1,9 +1,9 @@
 export default {
 	title: "Hi there, I am Johnny",
-	url: "https://stormhub.github.io/stormhub",
+	url: "https://stormhub.github.io",
 	language: "en",
 	description: ".NET, Typescript and AI",
-	// googleAnalyticsId: "G-J120ZJW1XQ",
+	googleAnalyticsId: "G-J120ZJW1XQ",
 	author: {
 		name: "Johnny Z",
 		email: "johnny.chow.19@gamil.com",
