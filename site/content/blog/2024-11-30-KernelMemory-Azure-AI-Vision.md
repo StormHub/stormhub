@@ -2,7 +2,7 @@
 title: Kernel Memory with Azure AI Vision
 description: Kernel Memory with Azure AI Vision.
 date: 2024-11-30
-tags: .NET AI KernelMemory
+tags: [ ".NET", "AI", "KernelMemory" ]
 permalink: ".net/ai/kernelmemory/2024/11/29/KernelMemory-Azure-AI-Vision.html"
 ---
 

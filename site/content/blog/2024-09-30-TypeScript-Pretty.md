@@ -2,7 +2,7 @@
 title: TypeScript type prettier
 description: TypeScript type prettier
 date: 2024-09-30
-tags: TypeScript
+tags: [ "TypeScript" ]
 permalink: "typescript/2024/09/29/TypeScript-Pretty.html"
 ---
 

@@ -2,7 +2,7 @@
 title: Lightweight AI Evaluation
 description: Lightweight AI Evaluation with SemanticKernel.
 date: 2024-12-11
-tags: .NET AI SemanticKernel
+tags: [ ".NET", "AI", "SemanticKernel" ]
 permalink: ".net/ai/semantickernel/2024/12/11/SemanticKernel-Evaluation.html"
 ---
 

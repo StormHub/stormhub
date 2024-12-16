@@ -2,7 +2,7 @@
 title: Evaluate AI with Microsoft AI Evaluation
 description: Evaluate AI with Microsoft.Extensions.AI.Evaluation.
 date: 2024-12-04
-tags: .NET AI
+tags: [ ".NET", "AI" ]
 permalink: ".net/ai/microsoft.extensions.ai/2024/12/03/Extensions-AI-Evaluation.html"
 ---
 

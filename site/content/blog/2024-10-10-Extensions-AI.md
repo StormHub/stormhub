@@ -2,7 +2,7 @@
 title: Microsoft extension AI
 description: Microsoft extension AI.
 date: 2024-10-10
-tags: .NET AI
+tags: [ ".NET", "AI" ]
 permalink: ".net/ai/2024/10/10/Extensions-AI.html"
 ---
 

@@ -2,7 +2,7 @@
 title: Kernel Memory with Azure
 description: Kernel Memory with Azure.
 date: 2024-11-18
-tags: .NET AI KernelMemory
+tags: [ ".NET", "AI", "KernelMemory" ]
 permalink: ".net/ai/kernelmemory/2024/11/18/KernelMemory-Azure.html"
 ---
 
