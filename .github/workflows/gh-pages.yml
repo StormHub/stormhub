@@ -32,11 +32,12 @@ jobs:
         with:
           path: ./.cache
           key: ${{ runner.os }}-eleventy-fetch-cache
-
-
-      - run: npm install
-      - run: npm run build-ghpages
-
+      - name: Build site
+        run: |
+          cd site
+          echo "Building the site"
+          npm install
+          npm run build-ghpages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
