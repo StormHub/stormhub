@@ -4,7 +4,6 @@ layout: layouts/base.njk
 
 {% set postslist = collections.posts | reverse %}
 
-<main>
 <nav class="d-md-none mx-auto text-center">
     <label class="mb-3">
     Posts
@@ -21,7 +20,7 @@ layout: layouts/base.njk
     </label>
     <hr />
 </nav>
-<div class="container d-flex flex-nowrap with-sidebar mw-content">
+<div class="container d-flex flex-nowrap with-sidebar">
 <aside class="flex-shrink-0 p-3 d-none d-md-block">
 <a href="/blog/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
     <span class="fs-5 fw-semibold">Posts</span>
@@ -46,4 +45,3 @@ layout: layouts/base.njk
 {{ content | safe }}
 </article>
 </div>
-</main>

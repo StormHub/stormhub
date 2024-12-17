@@ -6,4 +6,5 @@ eleventyNavigation:
 ---
 
 ## About
+
 Another human in tech passionate about .NET, Typescript and AI.
