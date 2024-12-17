@@ -23,7 +23,7 @@ const eleventyComputed = {
 	</div>
 
 	<div class="row align-items-center flex-1 g-lg-6 pb-5">
-		{% set postslist = collections[ tag ] %}
+		{% set postslist = collections[ tag ] | reverse %}
 		{% include "postslist.njk" %}
 	</div>
 
