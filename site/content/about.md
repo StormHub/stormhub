@@ -5,5 +5,5 @@ eleventyNavigation:
   order: 3
 ---
 
-# About
+## About
 Another human in tech passionate about .NET, Typescript and AI.

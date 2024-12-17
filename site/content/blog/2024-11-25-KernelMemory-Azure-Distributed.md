@@ -2,7 +2,7 @@
 title: Kernel Memory document ingestion
 description: Scale Kernel Memory document ingestion with Azure
 date: 2024-11-25
-tags: [ ".NET", "AI", "KernelMemory" ]
+tags: [ ".NET", "AI", "Kernel Memory" ]
 permalink: ".net/ai/kernelmemory/2024/11/25/KernelMemory-Azure-Distributed.html"
 ---
 

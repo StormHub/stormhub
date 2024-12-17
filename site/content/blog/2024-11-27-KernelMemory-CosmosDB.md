@@ -2,7 +2,7 @@
 title: Kernel Memory with Cosmos DB for NoSQL
 description: Kernel Memory with Cosmos DB for NoSQL vector search.
 date: 2024-11-27
-tags: [ ".NET", "AI", "KernelMemory" ]
+tags: [ ".NET", "AI", "Kernel Memory" ]
 permalink: ".net/ai/kernelmemory/2024/11/27/KernelMemory-CosmosDB.html"
 ---
 

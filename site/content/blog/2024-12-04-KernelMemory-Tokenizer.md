@@ -2,7 +2,7 @@
 title: Kernel Memory default tokenizer
 description: Kernel Memory default tokenizer.
 date: 2024-12-04
-tags: [ ".NET", "AI", "KernelMemory" ]
+tags: [ ".NET", "AI", "Kernel Memory" ]
 permalink: ".net/ai/kernelmemory/2024/12/03/KernelMemory-Tokenizer.html"
 ---
 
