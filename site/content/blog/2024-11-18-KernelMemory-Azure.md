@@ -49,7 +49,7 @@ var builder = new KernelMemoryBuilder()
         })
 ```
 
-# Azure AI Search service
+## Azure AI Search service
 Azure AI search service as vector databases
 ```csharp
 var builder = new KernelMemoryBuilder()
