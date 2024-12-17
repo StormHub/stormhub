@@ -10,7 +10,8 @@ permalink: ".net/ai/kernelmemory/2024/11/25/KernelMemory-Azure-Distributed.html"
 
 *{{date | readableDate("LLLL yyyy")}}*
 
-Benifits of scaling document ingestion with [Kernel Memory](https://github.com/microsoft/kernel-memory) on Azure
+## Document ingestion
+Benifits of document ingestion asynchronously with [Kernel Memory](https://github.com/microsoft/kernel-memory) on Azure
 
 - Scalability: Easily handle large volumes of documents by distributing the workload across multiple nodes.
 - Efficiency: Process documents in parallel, reducing the overall time required for ingestion.
@@ -18,7 +19,7 @@ Benifits of scaling document ingestion with [Kernel Memory](https://github.com/m
 - Resource Optimization: Utilize resources more effectively by balancing the load across the system.
 - Flexibility: Adapt to varying workloads and scale up or down as needed.
 
-# Setup distributed pipeline ingestion with Azure Queue Storage
+## Setup distributed pipeline ingestion with Azure Queue Storage
 ```csharp
 var builder = new KernelMemoryBuilder()
      .WithAzureQueuesOrchestration(
@@ -32,14 +33,14 @@ var builder = new KernelMemoryBuilder()
 ```
 Once queue orchestration is registered, Kernel Memory automatically sets up DistributedPipelineOrchestrator.
 
-# Make sure pipeline handler are hosted services.
+## Make sure pipeline handler are hosted services.
 Add handlers as hosted service to start listen to messages
 ```csharp
 // Add handlers as hosted services
 services.AddDefaultHandlersAsHostedServices();
 ```
 
-# Import documents asynchronously
+## Import documents asynchronously
 Distributed ingestion also makes importing document asynchronous, meaning when ImportDocumentAsync returns, the document ingestion is enqueued to be processed. 
 ```csharp
 await kernelMemory.ImportDocumentAsync(
@@ -59,6 +60,4 @@ if (status is { Completed: true })
 It is also worth noting each of the pipeline step has independant queue/posion queue on Azure Queue Storage.  
 
 [Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-11-25/ConsoleApp)
-
-
 
