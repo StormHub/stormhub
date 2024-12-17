@@ -6,12 +6,12 @@ const eleventyNavigation = {
 ---
 <div class="container d-flex flex-nowrap col-xl-10 col-xxl-8 px-4 py-4 mw-content">
 	<div class="row align-items-center g-lg-6 pb-5">
-		<h2>Tags</h2>
-		<div class="d-flex flex-nowrap flex-row fs-4">
+		<h2 class="mb-2">Tags</h2>
+		<div class="d-flex justify-content-start flex-wrap gap-2 fs-6">
 			{% for tag in collections | getKeys | filterTagList %}
 				{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-				<a href="{{ tagUrl }}" class="p-2">
-					<span class="badge rounded-pill bg-secondary text-lowercase py-2 px-3">{{ tag }}</span>
+				<a href="{{ tagUrl }}" class="d-flex align-items-center border border-primary rounded-5 text-decoration-none px-3 py-1">
+					{{ tag }}
 				</a>
 			{% endfor %}
 		</div>
