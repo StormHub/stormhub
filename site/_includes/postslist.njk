@@ -1,0 +1,16 @@
+<div class="px-3 width-full">
+{%- for post in postslist %}
+    <div class="d-flex flex-items-center flex-column flex-nowrap mb-3">
+        <a href="{{ post.url }}" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+            {% if post.data.title %}
+                <span class="h6 mb-0">{{ post.data.title }}</span>
+            {% else %}
+                <code>{{ post.url }}</code>
+            {% endif %}
+        </a>
+        <time class="text-muted" datetime="{{ post.date | htmlDateString }}">
+            <small>{{ post.date | readableDate("LLLL yyyy") }}</small>
+        </time> 
+    </div>
+{% endfor %}
+</div>
