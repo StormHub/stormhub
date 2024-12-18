@@ -16,27 +16,28 @@
     </label>
     <hr />
 </nav>
-<div class="container d-flex flex-nowrap with-sidebar">
-<aside class="flex-shrink-0 p-3 d-none d-md-block">
-<div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
-    <span class="fs-5 fw-semibold">Posts</span>
-</div>
-<ul class="list-unstyled ps-0">
-{%- for entry in postslist %}
-    <li class="mb-2">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ms-2 small">
-            <li class="mb-1">
-            {%- if entry.url == page.url -%}
-            <a href="{{entry.url}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded active" aria-current="page">{{entry.data.title}}</a>
-            {% else %}
-            <a href="{{entry.url}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">{{entry.data.title}}</a>
-            {% endif %}
+<div class="container d-flex flex-nowrap with-sidebar mw-content">
+    <aside class="flex-shrink-0 p-3 d-none d-md-block">
+        <div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <span class="fs-5 fw-semibold">Posts</span>
+        </div>
+        <ul class="list-unstyled ps-0">
+        {%- for entry in postslist %}
+            <li class="mb-2">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 ms-2 small">
+                    <li class="mb-1">
+                    {%- if entry.url == page.url -%}
+                    <a href="{{entry.url}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded active" aria-current="page">{{entry.data.title}}</a>
+                    {% else %}
+                    <a href="{{entry.url}}" class="link-body-emphasis d-inline-flex text-decoration-none rounded">{{entry.data.title}}</a>
+                    {% endif %}
+                    </li>
+                </ul>
             </li>
+        {%- endfor %}
         </ul>
-    </li>
-{%- endfor %}
-</ul>
-</aside>
-<article class="with-prose-content">
-{{ postslist[0].templateContent | safe }}
-</article>
+    </aside>
+    <article class="with-prose-content">
+        {{ postslist[0].templateContent | safe }}
+    </article>
+</div>
