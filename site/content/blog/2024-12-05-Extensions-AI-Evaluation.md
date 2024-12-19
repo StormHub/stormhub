@@ -11,7 +11,7 @@ permalink: ".net/ai/microsoft.extensions.ai/2024/12/03/Extensions-AI-Evaluation.
 *{{date | readableDate("LLLL yyyy")}}*
 
 Implementing a 'demo' RAG is straightforward with AI libraries like [Kernel Memory](https://github.com/microsoft/kernel-memory) or [Semantic Kernel](https://github.com/microsoft/semantic-kernel). However, production grade AI applications are significantly more challenging. AI programs are sensitive to changes and inherently probabilistic, unlike traditional deterministic tests. Tools like [Ragas](https://docs.ragas.io/en/stable/) address these issues. Microsoft has released a preview of [Microsoft.Extensions.AI.Evaluation](https://devblogs.microsoft.com/dotnet/evaluate-the-quality-of-your-ai-applications-with-ease/), followed by [Microsoft.Extensions.AI](https://devblogs.microsoft.com/dotnet/introducing-microsoft-extensions-ai-preview). Notably, Microsoft.Extensions.AI.Evaluation uses an 'LLM-as-a-Judge' approach to rank outcomes.
-<!--more-->
+
 Lets implement a fact evaluation from [OpenAI fact prompt](https://github.com/openai/evals/blob/a32c9826cd7d5d33d60a39b54fb96d1085498d9a/evals/registry/modelgraded/fact.yaml)
 
 ## Implement IEvaluator
