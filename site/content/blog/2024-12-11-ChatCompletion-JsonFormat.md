@@ -1,7 +1,7 @@
 ---
 title: OpenAI chat completion with Json output format
 description: Auzre/OpenAI chat completion supports json format with schema.
-date: 2024-12-11
+date: 2024-12-19
 tags: [ ".NET", "AI", "Semantic Kernel" ]
 ---
 
