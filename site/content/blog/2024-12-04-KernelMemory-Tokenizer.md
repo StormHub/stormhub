@@ -8,7 +8,7 @@ permalink: ".net/ai/kernelmemory/2024/12/03/KernelMemory-Tokenizer.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
+*{{date | readableDate }}*
 
 Choosing the right tokenizer for in AI is crucial because it directly impacts the accuracy and efficiency. There is an optional 'tokenizer' parameter when configure [Kernel Memory](https://github.com/microsoft/kernel-memory) for both text generation and embedding.
 If no 'tokenizer' specified, [Kernel Memory](https://github.com/microsoft/kernel-memory) attempts to pick up 'default' one.  But it does this by the AI model name (Depolyment in Azure OpenAI) like this 

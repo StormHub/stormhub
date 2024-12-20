@@ -8,7 +8,7 @@ permalink: ".net/ai/kernelmemory/2024/11/18/KernelMemory-Azure.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
+*{{date | readableDate }}*
 
 [Kernel Memory](https://github.com/microsoft/kernel-memory) with Azure OpenAI,
 Blob storage and AI Search.

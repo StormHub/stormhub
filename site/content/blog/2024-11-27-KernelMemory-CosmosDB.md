@@ -8,7 +8,7 @@ permalink: ".net/ai/kernelmemory/2024/11/27/KernelMemory-CosmosDB.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
+*{{date | readableDate }}*
 
 Officially announced in Microsoft Build 2024, Cosmos DB for NoSQL now support vector search. It also means [Kernel Memory](https://github.com/microsoft/kernel-memory) can be integrated with Cosmos DB for NoSQL. 
 

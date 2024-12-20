@@ -8,7 +8,7 @@ permalink: ".net/ai/kernelmemory/2024/11/25/KernelMemory-Azure-Distributed.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
+*{{date | readableDate }}*
 
 ## Document ingestion
 Benifits of document ingestion asynchronously with [Kernel Memory](https://github.com/microsoft/kernel-memory) on Azure

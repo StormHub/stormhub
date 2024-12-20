@@ -8,7 +8,7 @@ permalink: ".net/ai/kernelmemory/2024/11/29/KernelMemory-Azure-AI-Vision.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
+*{{date | readableDate }}*
 
 
 Extracting text from images for Retrieval-Augmented Generation (RAG) is a common task. [Kernel Memory](https://github.com/microsoft/kernel-memory) supports OCR functionality out of the box. 

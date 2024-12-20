@@ -8,7 +8,7 @@ permalink: "typescript/2024/09/29/TypeScript-Pretty.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
+*{{date | readableDate }}*
 
 TypeScript helper from [Matt Pocock](https://twitter.com/mattpocockuk) to reveal type details.
 

@@ -9,7 +9,7 @@
             {% endif %}
         </a>
         <time class="text-muted" datetime="{{ post.date | htmlDateString }}">
-            <small>{{ post.date | readableDate("LLLL yyyy") }}</small>
+            <small>{{ post.date | readableDate }}</small>
         </time> 
     </div>
 {% endfor %}

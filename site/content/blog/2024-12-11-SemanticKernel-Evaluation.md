@@ -8,8 +8,7 @@ permalink: ".net/ai/semantickernel/2024/12/11/SemanticKernel-Evaluation.html"
 
 # {{title}}
 
-*{{date | readableDate("LLLL yyyy")}}*
-
+*{{date | readableDate }}*
 
 For quick and easy evaluation or comparison of AI responses in .NET applications, particularly tests. We can leverage [autoevals](https://github.com/braintrustdata/autoevals) excellent 'LLM-as-a-Judge' prompts with the help of [Semantic Kernel](https://github.com/microsoft/semantic-kernel).
 
