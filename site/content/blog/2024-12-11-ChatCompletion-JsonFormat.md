@@ -9,7 +9,7 @@ tags: [ ".NET", "AI", "Semantic Kernel" ]
 
 *{{date | readableDate("LLLL yyyy")}}*
 
-I can't recall how many times I've tried to convince an LLM to return JSON so that I could perform API calls based on natural language inputs from users. Recently, I discovered that this functionality is natively supported by the  [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and Microsoft AI Extension Library. It is officially documented by the OpenAI API [here](https://platform.openai.com/docs/guides/structured-outputs). Note that this feature is only available in the latest large language models from GPT-4o/o1 and later. If you are using Azure OpenAI, ensure you have the supported versions when deploying models.
+I can't recall how many times I've tried to convince a LLM to return JSON so that I could perform API calls based on natural language inputs from users. Recently, I discovered that this functionality is natively supported by the [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and Microsoft AI Extension Library. It is officially documented by the OpenAI API [here](https://platform.openai.com/docs/guides/structured-outputs). Note that this feature is only available in the latest large language models from GPT-4o/o1 and later. If you are using Azure OpenAI, ensure you have the supported versions when deploying models.
 
 ## Chat completion
 [Semantic Kernel](https://github.com/microsoft/semantic-kernel) supports JSON output formatting in the ResponseFormat property from PromptExecutionSettings, as shown in the code below:

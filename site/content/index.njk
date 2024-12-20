@@ -4,11 +4,11 @@
     <label class="mb-3">
     Posts
     <select class="nav-on-change">
-    {%- for entry in postslist %}
-        {%- if entry.url == page.url -%}
-        <option value="{{entry.url | url}}" selected>{{entry.data.title}}</a></li>
+    {%- for post in postslist %}
+        {%- if post.url == page.url -%}
+        <option value="{{post.url | url}}" selected>{{post.data.title}}</a></li>
         {% else %}
-        <option value="{{entry.url | url}}">{{entry.data.title}}</a></li>
+        <option value="{{post.url | url}}">{{post.data.title}}</a></li>
         {% endif %}
     </li>
     {%- endfor %}

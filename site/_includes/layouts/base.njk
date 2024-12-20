@@ -10,8 +10,9 @@
 		{%- css %}{% include "public/css/index.css" %}{% endcss %}
 		{%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
 		{%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
-
 		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+
+		{%- js %}{% include "public/js/interactivity.js" %}{% endjs %}
 	</head>
 	<body class="h-100">
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
