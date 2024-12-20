@@ -34,7 +34,7 @@ var response = await chatCompletionService.GetChatMessageContentAsync(
     history, 
     new AzureOpenAIPromptExecutionSettings
     {
-        ResponseFormat = responseFormat 
+        ResponseFormat = responseFormat // Json schema
     });
 // Json result    
 var result = JsonSerializer.Deserialize<CalendarEvent>(response.ToString(), jsonSerializerOptions);
@@ -64,6 +64,7 @@ public sealed class CalendarEvent
             DisallowAdditionalProperties = true,
         };
 
+        // Json schema from types with descriptions on properties
         var jsonElement = AIJsonUtilities.CreateJsonSchema(
             typeof(CalendarEvent),
             description: "Calendar event result",
