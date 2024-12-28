@@ -1,7 +1,7 @@
 ---
 title: Working with multiple language models in Semantic Kernel
 description: Use multiple language models in Semantic Kerneal.
-date: 2024-12-17
+date: 2024-12-27
 tags: [ ".NET", "AI", "Semantic Kernel" ]
 ---
 
@@ -9,7 +9,7 @@ tags: [ ".NET", "AI", "Semantic Kernel" ]
 
 *{{date | readableDate }}*
 
-It is common to work with multiple large language models (LLMs) simultaneously, especially when running evaluations or tests. Semantic Kernel supports registering multiple text generation and embedding services using serviceId and modelId.
+It is common to work with multiple large language models (LLMs) simultaneously, especially when running evaluations or tests. [Semantic Kernel](https://github.com/microsoft/semantic-kernel) supports registering multiple text generation and embedding services using serviceId and modelId.
 
 ## Register 'serviceId' and 'modelId'
 Suppose we have the following setup
@@ -62,10 +62,12 @@ var result = await kernel.InvokePromptAsync(
     });
 ```
 
-When registering chat completion services, if serviceId is provided, Semantic Kernel also registers chat completion services as keyed. With the above registration, the following would work:
+When registering chat completion services, if serviceId is provided, [Semantic Kernel](https://github.com/microsoft/semantic-kernel) also registers chat completion services as keyed. With the above registration, the following would work:
 ```csharp
 var chatCompletionService = kernel.Services.GetRequiredKeyedService<IChatCompletionService>("azure:gpt-4o");
 ```
 
 ## IAIService and IAIServiceSelector
-All AI-related services, including chat completion and text embedding, implement the IAIService interface, which defines a metadata property. This metadata contains attributes specific to the service implementation. For instance, the AzureOpenAIChatCompletionService includes the deployment name and model name. The default IAIServiceSelector resolves services by serviceId first, and then by modelId to match the IAIService metadata. To gain full control over AI service selection, you can implement a custom IAIServiceSelector and register it as a service with Semantic Kernel.
+All AI-related services, including chat completion and text embedding, implement the IAIService interface, which defines a metadata property. This metadata contains attributes specific to the service implementation. For instance, the AzureOpenAIChatCompletionService includes the deployment name and model name. The default IAIServiceSelector resolves services by serviceId first, and then by modelId to match the IAIService metadata. To gain full control over AI service selection, you can implement a custom IAIServiceSelector and register it as a service with [Semantic Kernel](https://github.com/microsoft/semantic-kernel).
+
+[Sample code here](https://github.com/StormHub/stormhub/tree/main/resources/2024-12-27/ConsoleApp)
