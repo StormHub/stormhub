@@ -50,16 +50,12 @@ var promptExecutionSettings  = new PromptExecutionSettings
 var result = await kernel.InvokePromptAsync(
     """
     Answer with the given fact:
-    {{$fact}}
+    Sky is blue and violets are purple
 
     input:
-    {{$question}}
+    What color is sky?
     """, 
-    new KernelArguments(promptExecutionSettings)
-    {
-       ["fact"] = "Sky is blue and violets are purple",
-       ["question"] = "What color is sky?"
-    });
+    new KernelArguments(promptExecutionSettings));
 ```
 
 When registering chat completion services, if serviceId is provided, [Semantic Kernel](https://github.com/microsoft/semantic-kernel) also registers chat completion services as keyed. With the above registration, the following would work:
