@@ -44,12 +44,12 @@ try
                     return new AzureOpenAIClient(new Uri(uri), new AzureKeyCredential(key), clientOptions);
                 });
 
-                services.AddChatClient(builder =>
-                    builder.Services.GetRequiredService<AzureOpenAIClient>()
+                services.AddChatClient(provider =>
+                    provider.GetRequiredService<AzureOpenAIClient>()
                         .AsChatClient(modelId));
 
-                services.AddEmbeddingGenerator<string, Embedding<float>>(builder =>
-                    builder.Services.GetRequiredService<AzureOpenAIClient>()
+                services.AddEmbeddingGenerator(provider =>
+                    provider.GetRequiredService<AzureOpenAIClient>()
                         .AsEmbeddingGenerator(embeddingId));
             })
         .Build();
@@ -59,7 +59,7 @@ try
     var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
     
     await using var scope = host.Services.CreateAsyncScope();
-    using var chatClient = scope.ServiceProvider.GetRequiredService<IChatClient>();
+    using (var chatClient = scope.ServiceProvider.GetRequiredService<IChatClient>())
     {
         var response = await chatClient.CompleteAsync("Hello, who are you?", default, lifetime.ApplicationStopping);
         Console.WriteLine(response.Message);
