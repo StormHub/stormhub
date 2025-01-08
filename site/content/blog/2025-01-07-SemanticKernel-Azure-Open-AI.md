@@ -11,7 +11,7 @@ tags: [ ".NET", "AI", "Semantic Kernel" ]
 
 In real-world systems, it's crucial to handle HTTP errors effectively, especially when interacting with Large Language Models (LLMs) like Azure OpenAI. Rate limit exceeded errors (tokens per minute or requests per minute) always happen at some point, resulting in 429 errors. This blog post explores different approaches to HTTP error handling with semantic kernel and Azure OpenAI.
 
-** Default
+## Default
 ```csharp
 var builder = Kernel.CreateBuilder();
 builder.AddAzureOpenAIChatCompletion(
@@ -21,7 +21,7 @@ builder.AddAzureOpenAIChatCompletion(
 ```
 The default setup for [Semantic Kernel](https://github.com/microsoft/semantic-kernel) with Azure OpenAI by AddAzureOpenAIChatCompletion. This approach offers a built-in retry policy that automatically retries requests up to three times with exponential backoff. Additionally, it can detect specific HTTP headers like 'retry-after' to implement more tailored retries.
 
-** HttpClient
+## HttpClient
 ```csharp
 var factory = provider.GetRequiredService<IHttpClientFactory>();
 var httpClient = factory.CreateClient("auzre:gpt-4o");
@@ -45,7 +45,7 @@ services.AddHttpClient("auzre:gpt-4o")
 ```
 An important benefit of using HttpClient is that it's not limited to Azure OpenAI. This approach works with other AI connectors like OpenAI as well.
 
-** AzureOpenAIClient
+## AzureOpenAIClient
 ```csharp
 var azureOpenAIClient = new AzureOpenAIClient(
     endpoint: new Uri("https://resource-name.openai.azure.com"),
@@ -68,7 +68,7 @@ var clientOptions = new AzureOpenAIClientOptions
 This configuration enables you to combine HTTP retry policies from HttpClient with custom pipeline policy-based retries from the Azure OpenAI SDK.
 
 
-** Recommendations
+## Recommendations
 The default setup might not be suitable for scenarios where you frequently encounter token limit issues.
 Using HttpClient provides more control and flexibility, making it a favorable option for broader compatibility beyond Azure OpenAI.
 If you already have AzureOpenAIClient registered and require maximum control, this approach allows you to leverage both HTTP client policies and Azure OpenAI pipeline policy-based retries.
