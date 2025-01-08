@@ -33,10 +33,11 @@ builder.AddAzureOpenAIChatCompletion(
     apiKey: "api-key",  // Or DefaultAzureCredential
     httpClient: httpClient);
 ```
-By configuring an HttpClient instance, you can gain more control over HTTP error handling. [Semantic Kernel](https://github.com/microsoft/semantic-kernel) disables the default retry policy when HttpClient is provided. This allows you to implement custom retry logic using the Microsoft.Extensions.Http.Resilience library. With this approach, you can define the number of retry attempts, timeouts, and how to handle specific error codes like 429 (rate limit exceeded).
+By configuring an HttpClient instance, you can gain more control over HTTP error handling. [Semantic Kernel](https://github.com/microsoft/semantic-kernel) disables the default retry policy when HttpClient is provided. This allows you to implement custom retry logic using the Microsoft.Extensions.Http.Resilience library. With this approach, you can define the number of retry attempts, timeouts, and how to handle specific error codes like 429 (rate limit exceeded). **It is strongly recommended to add retry policies to handle transient errors with HttpClient**
 ```csharp
 services.AddHttpClient("auzre:gpt-4o")
-    .AddStandardResilienceHandler() // Automatically handle transient errors inlcuding '429'
+    // 'standard' automatically handle transient errors inlcuding '429'
+    .AddStandardResilienceHandler() 
     .Configure(options =>
         {
             // Options for attempts and time out etc
@@ -70,5 +71,4 @@ This configuration enables you to combine HTTP retry policies from HttpClient wi
 
 ## Recommendations
 The default setup might not be suitable for scenarios where you frequently encounter token limit issues.
-Using HttpClient provides more control and flexibility, making it a favorable option for broader compatibility beyond Azure OpenAI.
 If you already have AzureOpenAIClient registered and require maximum control, this approach allows you to leverage both HTTP client policies and Azure OpenAI pipeline policy-based retries.
