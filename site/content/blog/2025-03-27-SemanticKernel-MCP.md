@@ -8,7 +8,6 @@ tags: [ ".NET", "AI", "Semantic Kernel", 'MCP' ]
 # {{title}}
 
 *{{date | readableDate }}*
-# Integrating Model Context Protocol with Semantic Kernel and Ollama
 
 The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) aims to standardize connections between AI systems and data sources. This post demonstrates integrating [mcp-playwright](https://github.com/executeautomation/mcp-playwright) with [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and [phi4-mini](https://ollama.com/library/phi4-mini) (via Ollama) for browser automation.
 
@@ -96,7 +95,7 @@ For reliable function calling, [phi4-mini:latest](https://ollama.com/library/phi
     };
 
     var result = await kernel.InvokePromptAsync(
-        "open browser and navigate to [https://www.google.com](https://www.google.com)",
+        "open browser and navigate to https://www.google.com",
         new KernelArguments(executionSettings));
     ```
 
