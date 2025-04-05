@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "server": "npx @playwright/mcp --port 8931",
+    "inspector": "npx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@playwright/mcp": "^0.0.9",
+    "@modelcontextprotocol/sdk": "^1.6.1"
+  }
+}
