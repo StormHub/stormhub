@@ -105,20 +105,21 @@ try
             }
         };
 
+        /*
+        // Streaming
         await foreach (var chatUpdate in chatCompletionService
             .GetStreamingChatMessageContentsAsync(chatHistory, promptExecutionSettings, kernel, lifetime.ApplicationStopping))
         {
             Console.Write(chatUpdate.Content);
         }
+        */
 
-        /*
         var messageContent = await chatCompletionService.GetChatMessageContentAsync(chatHistory,
             promptExecutionSettings,
             kernel,
             lifetime.ApplicationStopping);
 
         Console.WriteLine(messageContent.Content);
-        */
     }
 
     lifetime.StopApplication();
