@@ -40,6 +40,12 @@ There are basically two methods in the interface one is for chat reponse and the
 
 2.  **Use automatically tool calls**
     ```csharp
+    // Set up bedrock
+    var runtimeClient = new AmazonBedrockRuntimeClient(RegionEndpoint.APSoutheast2);
+    IChatClient client = new AnthropicChatClient(runtimeClient, "anthropic.claude-3-5-sonnet-20241022-v2:0");
+    
+    // Setup chat client function calls as 1.
+
     var chatHistory = new ChatHistory();
     chatHistory.AddUserMessage("What is the special soup and its price?");
         

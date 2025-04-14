@@ -32,7 +32,7 @@ try
 
             // services.AddTransient<TraceHttpHandler>();
             services.AddHttpClient(nameof(AmazonBedrockRuntimeClient));
-                // .AddHttpMessageHandler<TraceHttpHandler>();
+            //    .AddHttpMessageHandler<TraceHttpHandler>();
             
             // AWS bedrock
             services.AddTransient<IAmazonBedrockRuntime>(provider =>
