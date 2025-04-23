@@ -16,6 +16,7 @@ This post focuses on implementing server prompts, a key feature of the [Model Co
 [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for defining prompts through attributes. This method offers a direct implementation without requiring Semantic Kernel for basic string manipulation as the following example shows.
 
     ```csharp
+
     [McpServerPromptType]
     internal sealed class StringFormatPrompt
     {
@@ -44,7 +45,9 @@ This post focuses on implementing server prompts, a key feature of the [Model Co
     var serverBuilder = builder.Services.AddMcpServer()
         .WithHttpTransport()
         .WithPrompts<StringFormatPrompt>();
+    
     ```
+
 
 ## Semantic Kernel Templates as MCP Server Prompts
 Semantic Kernel provides templating capabilities through JSON/YAML, Handlebars, and Liquid formats, along with plugin support. These templates can be exposed as MCP prompts using the MCP C# SDK.
@@ -67,6 +70,7 @@ Semantic Kernel provides templating capabilities through JSON/YAML, Handlebars, 
     McpServerPrompt is the abstract base class that represents an MCP prompt we can implement.
 
     ```csharp
+
     internal sealed class TemplateServerPrompt : McpServerPrompt
     {
         public TemplateServerPrompt(PromptTemplateConfig promptTemplateConfig, IPromptTemplateFactory? promptTemplateFactory, ILoggerFactory? loggerFactory)
@@ -127,12 +131,14 @@ Semantic Kernel provides templating capabilities through JSON/YAML, Handlebars, 
         .WithHttpTransport();
     serverBuilder.Services.AddSingleton<McpServerPrompt>(provider => 
         provider.GetRequiredService<TemplateServerPrompt>());
+
     ```
 
 3.  **Exposing AIFunction as McpServerPrompt**
     The McpServerPrompt class provides a Create method to expose a Microsoft.Extensions.AI.AIFunction as an MCP server prompt.
 
     ```csharp
+
     internal sealed class TemplateAIFunction : AIFunction 
     {
         //...
