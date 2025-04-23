@@ -13,7 +13,7 @@ This post focuses on implementing server prompts, a key feature of the [Model Co
 
 
 ## MCP Server Prompts via MCP C# SDK Attributes
-The [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for defining prompts through attributes. This method offers a direct implementation without requiring Semantic Kernel for basic string manipulation as the following example shows.
+[MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for defining prompts through attributes. This method offers a direct implementation without requiring Semantic Kernel for basic string manipulation as the following example shows.
 
     ```csharp
     [McpServerPromptType]
@@ -44,7 +44,6 @@ The [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for 
     var serverBuilder = builder.Services.AddMcpServer()
         .WithHttpTransport()
         .WithPrompts<StringFormatPrompt>();
-    
     ```
 
 ## Semantic Kernel Templates as MCP Server Prompts
