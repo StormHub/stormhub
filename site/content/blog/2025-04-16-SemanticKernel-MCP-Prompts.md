@@ -12,8 +12,8 @@ draft: true
 
 The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) aims to standardize connections between AI systems and data sources. This post demonstrates server prompt implemented with [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk). MCP server prompts are reusable templates [more details](https://modelcontextprotocol.io/docs/concepts/prompts).
 
-## MCP Server prompts
-[MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) defines a set of attributes for prompts
+## MCP Server Prompts via MCP C# SDK Attributes
+The [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for defining prompts through attributes. This method offers a direct implementation without requiring Semantic Kernel for basic string manipulation.
     ```csharp
     [McpServerPromptType]
     internal sealed class StringFormatPrompt
@@ -34,7 +34,7 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
             var content = string.Format(CultureInfo.InvariantCulture, _format, topic);
             
             return [
-                new (ChatRole.User,content)
+                new (ChatRole.User, content)
             ];
         }
     }    
@@ -45,13 +45,12 @@ The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction)
         .WithPrompts<StringFormatPrompt>();
     
     ```
-As the above show, MCP server prompts can be implemented easily without [Semantic Kernel](https://github.com/microsoft/semantic-kernel)
+The preceding code illustrates a simple MCP server prompt implemented using string formatting, independent of Semantic Kernel.
 
-## Prompt tempates in Semantic Kernel
-[Semantic Kernel](https://github.com/microsoft/semantic-kernel) supports prompt template format of default format (json/yaml), handlebars and liquid with plugins.  We can expose those as MCP prompts. 
+## Semantic Kernel Templates as MCP Server Prompts
+Semantic Kernel provides templating capabilities through JSON/YAML, Handlebars, and Liquid formats, along with plugin support. These templates can be exposed as MCP prompts using the MCP C# SDK.
 
-1.  **Template configuration and factory:**
-Work with PromptTemplateConfig and IPromptTemplateFactory in [Semantic Kernel](https://github.com/microsoft/semantic-kernel) for templates.
+1.  **Templates in semnatic kernel**
     ```csharp
     var templateConfig = new PromptTemplateConfig("Tell a joke about {{$topic}}.");
     IPromptTemplateFactory templateFactory = new KernelPromptTemplateFactory();
@@ -59,8 +58,9 @@ Work with PromptTemplateConfig and IPromptTemplateFactory in [Semantic Kernel](h
     // template.RenderAsync(...)
     ```
 
-2.  **Expose prompts as McpServerPrompt :**
-McpServerPrompt is the abstract base class that represents an MCP prompt we can implement.
+2.  **Expose prompts as McpServerPrompt**
+    McpServerPrompt is the abstract base class that represents an MCP prompt we can implement.
+
     ```csharp
     internal sealed class TemplateServerPrompt : McpServerPrompt
     {
@@ -124,8 +124,9 @@ McpServerPrompt is the abstract base class that represents an MCP prompt we can 
         provider.GetRequiredService<TemplateServerPrompt>());
     ```
 
-3.  **Expose prompts as AIFunction :**
-Because McpServerPrompt also can be created from Microsoft.Extensions.AI.AIFunction, we can also implement it and exposed it to MCP server.
+3.  **Exposing AIFunction as McpServerPrompt**
+    The McpServerPrompt class provides a Create method to expose a Microsoft.Extensions.AI.AIFunction as an MCP server prompt.
+
     ```csharp
     internal sealed class TemplateAIFunction : AIFunction 
     {
@@ -151,7 +152,7 @@ Because McpServerPrompt also can be created from Microsoft.Extensions.AI.AIFunct
     var serverBuilder = builder.Services.AddMcpServer()
         .WithHttpTransport();
     serverBuilder.Services.AddSingleton<McpServerPrompt>(provider => 
-        provider.GetRequiredService<TemplateServerPrompt>());
+        McpServerPrompt.Create(provider.GetRequiredService<TemplateServerPrompt>()));
 
     ```
 
