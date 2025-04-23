@@ -3,7 +3,6 @@ title: Model context protocol server prompts with microsoft semantic kernel
 description: Model context protocol (MCP) server prompts implementation with Semantic Kerneal.
 date: 2025-04-16
 tags: [ ".NET", "AI", "Semantic Kernel", 'MCP' ]
-draft: true
 ---
 
 # {{title}}
