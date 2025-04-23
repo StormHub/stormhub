@@ -15,39 +15,37 @@ This post focuses on implementing server prompts, a key feature of the [Model Co
 ## MCP Server Prompts via MCP C# SDK Attributes
 [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for defining prompts through attributes. This method offers a direct implementation without requiring Semantic Kernel for basic string manipulation as the following example shows.
 
-    ```csharp
+```csharp
 
-    [McpServerPromptType]
-    internal sealed class StringFormatPrompt
+[McpServerPromptType]
+internal sealed class StringFormatPrompt
+{
+    private readonly string _format;
+    private readonly ILogger _logger;
+        
+    public StringFormatPrompt(ILogger<StringFormatPrompt> logger)
     {
-        private readonly string _format;
-        private readonly ILogger _logger;
+        _logger = logger;
+        _format = "Tell a joke about {0}.";
+    }
         
-        public StringFormatPrompt(ILogger<StringFormatPrompt> logger)
-        {
-            _logger = logger;
-            _format = "Tell a joke about {0}.";
-        }
-        
-        [McpServerPrompt(Name = "Joke"), Description("Tell a joke about a topic.")]
-        public IReadOnlyCollection<ChatMessage> Format([Description("The topic of the joke.")] string topic)
-        {
-            _logger.LogInformation("Generating prompt with topic: {Topic}", topic);
-            var content = string.Format(CultureInfo.InvariantCulture, _format, topic);
-            
-            return [
-                new (ChatRole.User, content)
-            ];
-        }
-    }    
+    [McpServerPrompt(Name = "Joke"), Description("Tell a joke about a topic.")]
+    public IReadOnlyCollection<ChatMessage> Format([Description("The topic of the joke.")] string topic)
+    {
+        _logger.LogInformation("Generating prompt with topic: {Topic}", topic);
+        var content = string.Format(CultureInfo.InvariantCulture, _format, topic);
+        return [
+            new (ChatRole.User, content)
+        ];
+    }
+ }    
 
-    // Register for the prompt
-    var serverBuilder = builder.Services.AddMcpServer()
-        .WithHttpTransport()
-        .WithPrompts<StringFormatPrompt>();
+ // Register for the prompt
+ var serverBuilder = builder.Services.AddMcpServer()
+    .WithHttpTransport()
+    .WithPrompts<StringFormatPrompt>();
     
-    ```
-
+```
 
 ## Semantic Kernel Templates as MCP Server Prompts
 Semantic Kernel provides templating capabilities through JSON/YAML, Handlebars, and Liquid formats, along with plugin support. These templates can be exposed as MCP prompts using the MCP C# SDK.
