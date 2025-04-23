@@ -14,6 +14,7 @@ This post focuses on implementing server prompts, a key feature of the [Model Co
 
 ## MCP Server Prompts via MCP C# SDK Attributes
 The [MCP C# SDK](https://github.com/modelcontextprotocol/csharp-sdk) allows for defining prompts through attributes. This method offers a direct implementation without requiring Semantic Kernel for basic string manipulation as the following example shows.
+
     ```csharp
     [McpServerPromptType]
     internal sealed class StringFormatPrompt
@@ -51,6 +52,7 @@ Semantic Kernel provides templating capabilities through JSON/YAML, Handlebars, 
 
 1.  **Prompt Templates in Semantic Kernel**
     Semantic Kernel templates are configured with PromptTemplateConfig, created by IPromptTemplateFactory implementations, and can be easily rendered with input variables for dynamic prompt generation.
+    
     ```csharp
     var templateConfig = new PromptTemplateConfig("Tell a joke about {{$topic}}.");
     IPromptTemplateFactory templateFactory = new KernelPromptTemplateFactory();
