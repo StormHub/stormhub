@@ -1,7 +1,7 @@
 ---
 title: Building End-to-End Local AI Agents with Microsoft Agent Framework and AG-UI
 description: The Agent–User Interaction (AG-UI) Protocol implemented by Microsoft Agent Framework.
-date: 2025-03-27
+date: 2025-11-23
 tags: [ ".NET", "AI", "Agent", 'AG-UI' ]
 ---
 
@@ -26,7 +26,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IChatClient>(provider =>
 {
     var factory = provider.GetRequiredService<IHttpClientFactory>();
-    // Ensure you use a wrapper that handles standard formatting (see Implementation Note below)
+    // Ensure you use a wrapper that handles standard formatting 
+    // (see Implementation Note below)
     return new OllamaApiClient(factory.CreateClient("OllamaClient"), "phi4");
 });
 
