@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+title: All Posts
+permalink: /blog/
+tags: []
+eleventyExcludeFromCollections: true
+---
+
+{% set postslist = collections.posts | reverse %}
+
+<div class="container mw-content">
+    <h2 class="mb-4">All Posts</h2>
+    <ul class="list-unstyled">
+    {%- for post in postslist %}
+        <li class="d-flex align-items-baseline gap-3 mb-3">
+            <time class="text-muted text-nowrap" datetime="{{ post.date | htmlDateString }}" style="min-width: 7rem;">
+                <small>{{ post.date | readableDate("dd LLL yyyy") }}</small>
+            </time>
+            <a href="{{ post.url }}" class="link-body-emphasis text-decoration-none">{{ post.data.title }}</a>
+        </li>
+    {%- endfor %}
+    </ul>
+</div>
