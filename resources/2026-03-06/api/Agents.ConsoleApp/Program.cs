@@ -100,7 +100,7 @@ try
                         var arguments =
                             functionCallContent.Arguments?.Select(x => $"Name: {x.Key} \n Value: {x.Value}") ?? [];
                         Console.WriteLine(
-                            $"\n[Function Call - Name: {functionCallContent.Name}, Arguments: {string.Join('\n', arguments)}]");
+                            $"\n[Function Call - Name: {functionCallContent.Name}, \n Arguments: {string.Join('\n', arguments)}]");
                         break;
 
                     case FunctionResultContent functionResultContent:
