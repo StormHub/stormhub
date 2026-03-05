@@ -142,6 +142,8 @@ internal sealed class AgentOptions
         [Description("The relative date expression to parse (e.g., 'today', 'tomorrow', 'next Friday', 'this weekend', 'in 5 days')")]
         string dateExpression)
     {
+        _logger.LogInformation("ParseRelativeDate {Expression}", dateExpression);
+        
         var today = DateTime.Today;
         var expression = dateExpression.Trim().ToLowerInvariant();
 
