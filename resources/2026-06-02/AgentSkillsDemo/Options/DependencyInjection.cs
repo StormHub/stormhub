@@ -17,10 +17,13 @@ internal static class DependencyInjection
             .Get<AgentChatOptions>()
             ?? throw new InvalidOperationException($"{nameof(AgentChatOptions)} configuration required.");
 
-        services.AddHttpClient(options.Model).ConfigureHttpClient(client =>
-        {
-            client.BaseAddress = new Uri(options.BaseUrl);
-        });
+        services.AddTransient<TraceHttpHandler>();
+        services.AddHttpClient(options.Model)
+            .ConfigureHttpClient(client =>
+            {
+                client.BaseAddress = new Uri(options.BaseUrl);
+            })
+            .AddHttpMessageHandler<TraceHttpHandler>();
         services.AddChatClient(options);
 
         services.AddTransient<AgentSkillsProvider>(provider =>
