@@ -1,3 +1,4 @@
+using AgentSkillsDemo.skills;
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,7 @@ internal static class DependencyInjection
                 ChatOptions = new ChatOptions
                 {
                     Instructions = "You are a helpful assistant that can convert units. Use the available tools to load skills, read references, and perform conversions.",
+                    Tools = [AIFunctionFactory.Create(Tool.Convert)]
                 },
                 AIContextProviders = [skillsProvider],
             };
