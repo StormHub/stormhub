@@ -29,7 +29,8 @@ internal static class DependencyInjection
         services.AddTransient<AgentSkillsProvider>(provider =>
         {
             var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
-            var skillsProvider = new AgentSkillsProvider(Path.Combine(AppContext.BaseDirectory, "skills"), 
+            var skillsProvider = new AgentSkillsProvider(
+                Path.Combine(AppContext.BaseDirectory, "skills"), 
                 loggerFactory: loggerFactory);
             return skillsProvider;
         });
@@ -50,7 +51,19 @@ internal static class DependencyInjection
                 AIContextProviders = [skillsProvider],
             };
             
-            return chatClient.AsAIAgent(agentOptions);
+            var agent = chatClient.AsAIAgent(agentOptions);
+
+            // Intercept every tool call so we can observe when skill tools fire.
+            return new AIAgentBuilder(agent)
+                .Use(async (_, ctx, next, ct) =>
+                {
+                    if (ctx.Function.Name is "load_skill" or "read_skill_resource" or "run_skill_script")
+                    {
+                        Console.WriteLine($"Skill triggered: {ctx.Function.Name}({ctx.Arguments.GetValueOrDefault("skillName")})");
+                    }
+                    return await next(ctx, ct);
+                })
+                .Build();
         });
         return services;
     }
