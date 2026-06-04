@@ -1,5 +1,5 @@
 ---
-title: Agent Skills in Microsoft Agent Framework — and When Their Content Gets Dropped
+title: Agent Skills in Microsoft Agent Framework
 description: How progressive disclosure works for skills in Microsoft Agent Framework, and the one question the docs don't answer — when loaded skill content is evicted.
 date: 2026-06-04
 tags: [ "AI", "Agent", "Skills" ]
