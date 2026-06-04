@@ -114,3 +114,24 @@ So where does that loaded content go? Straight into the session history — and 
 
 The `load_skill` body and the reference are sitting right there as ordinary tool messages, and nothing removes them. That's the part to take away: within a session, loaded skill content lives **forever**. It's not the skills provider holding on to it — `load_skill` just returns a normal tool message, and a tool message is history like any other. So every subsequent turn on that session re-sends the whole thing. No budget, no sliding window, no eviction; the only thing that clears it is starting a new session.
 
+## Compact automatically — but only when skills are in play
+
+Skills can be large, so on a long-lived session this adds up fast: you can't keep carrying every loaded skill forward. The fix is compaction, and the framework ships it out of the box. `CompactionProvider` is just another `AIContextProvider` you add alongside the skills provider, and `SummarizationCompactionStrategy` *summarizes* older history instead of dropping it — and it groups messages so a `load_skill` call is never split from its result.
+
+I don't want to compact on *every* turn, though — only when there's actually skill content to reclaim. A `CompactionTrigger` is just a predicate over the message groups, so I gate it on whether a skill tool was called:
+
+```csharp
+CompactionTrigger skillsTriggered = index =>
+    index.Groups.SelectMany(g => g.Messages).Any(History.MentionsSkillTool);
+
+AIContextProviders =
+[
+    skillsProvider,
+    new CompactionProvider(
+        new SummarizationCompactionStrategy(chatClient, skillsTriggered, minimumPreservedGroups: 2)),
+];
+```
+
+Compaction runs before each turn. On a fresh first turn there's nothing to compact; once a skill has been loaded, the next turn triggers a one-off summarization call and the bulky `SKILL.md` body drops out of what's sent to the model — replaced by a short summary, while the conversation keeps going. Spend the budget lazily on the way in, reclaim it automatically on the way out.
+
+[Complete sample code](https://github.com/StormHub/stormhub/tree/main/resources/2026-06-02/AgentSkillsDemo)

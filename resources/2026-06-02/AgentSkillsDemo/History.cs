@@ -16,6 +16,13 @@ internal static class History
     };
 
     /// <summary>
+    /// True when the message contains a call to one of the built-in skill tools.
+    /// Enough to detect "a skill was triggered" without correlating result call ids.
+    /// </summary>
+    public static bool MentionsSkillTool(ChatMessage message) =>
+        message.Contents.OfType<FunctionCallContent>().Any(call => SkillTools.Contains(call.Name));
+
+    /// <summary>
     /// True when the message is a skill tool call, or the tool result of one.
     /// Result messages only carry a <see cref="FunctionResultContent.CallId"/>, so the
     /// caller must supply the set of skill call ids to recognise them.

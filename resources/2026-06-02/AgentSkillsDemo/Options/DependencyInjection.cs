@@ -1,5 +1,7 @@
+using AgentSkillsDemo;
 using AgentSkillsDemo.skills;
 using Microsoft.Agents.AI;
+using Microsoft.Agents.AI.Compaction;
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,7 +41,23 @@ internal static class DependencyInjection
         {
             var chatClient = provider.GetRequiredKeyedService<IChatClient>(options.Model);
             var skillsProvider = provider.GetRequiredService<AgentSkillsProvider>();
-            
+            var loggerFactory = provider.GetRequiredService<ILoggerFactory>();
+
+            // Compact automatically, but ONLY when the history actually contains loaded
+            // skill content — a custom trigger that scans the message groups for skill
+            // tool calls. (It also doubles as the stop condition, so summarization folds
+            // until the skill content is gone, then stops.)
+            CompactionTrigger skillsTriggered = index =>
+                index.Groups.SelectMany(group => group.Messages).Any(History.MentionsSkillTool);
+
+            // minimumPreservedGroups defaults to 8 — too high for this short demo, so lower it.
+            var compaction = new CompactionProvider(
+                new SummarizationCompactionStrategy(
+                    chatClient,
+                    skillsTriggered,
+                    minimumPreservedGroups: 2),
+                loggerFactory: loggerFactory);
+
             var agentOptions = new ChatClientAgentOptions
             {
                 Name = "UnitConverterAgent",
@@ -48,7 +66,7 @@ internal static class DependencyInjection
                     Instructions = "You are a helpful assistant that can convert units. Use the available tools to load skills, read references, and perform conversions.",
                     Tools = [AIFunctionFactory.Create(Tool.Convert)]
                 },
-                AIContextProviders = [skillsProvider],
+                AIContextProviders = [skillsProvider, compaction],
             };
             
             var agent = chatClient.AsAIAgent(agentOptions);
