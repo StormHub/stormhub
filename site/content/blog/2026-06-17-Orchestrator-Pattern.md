@@ -11,6 +11,21 @@ tags: [ "AI", "Agent", "TypeScript" ]
 
 This post is a TypeScript implementation of the pattern described in [**"Beyond the Agentic Loop: The Orchestrator Pattern for Multi-Agent Systems"**](https://stackademic.com/blog/beyond-the-agentic-loop-the-orchestrator-pattern-for-multi-agent-systems) by **Amogh Ubale** (Stackademic). The original is Python with generic agents; here we keep the idea intact and re-theme it as a **shopping assistant** so the three execution modes have something concrete to chew on. All the design credit goes to that article — go read it first.
 
+## The cast: a handful of shopping agents
+
+Before the pattern, the scene. The demo is a small storefront assistant backed by a
+few single-purpose agents:
+
+- **Catalog** — list the categories on offer, or search products by keyword and price.
+- **Inventory** — check stock and availability for a product.
+- **Pricing** — look up the current price and any active promotions.
+- **Reviews** — fetch a product's rating and review highlights.
+- **Order** — place an order for a product.
+
+A customer request might need just one of these, several of them at once, or a few in a
+strict order — and deciding *which* of those shapes a request calls for is exactly what
+the orchestrator is for.
+
 ## The problem: the LLM as a `while` loop
 
 The default way to build a multi-agent system is the **agentic loop**: you hand the
