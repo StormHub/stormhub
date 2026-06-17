@@ -1,0 +1,33 @@
+{
+  "name": "shopping-agent-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A TypeScript demo of the Orchestrator pattern (route -> execute -> synthesize) themed as a shopping agent. Ported from Amogh Ubale's 'Beyond the Agentic Loop'.",
+  "scripts": {
+    "dev": "tsx watch src/server/index.ts",
+    "start": "tsx src/server/index.ts",
+    "client": "tsx src/client/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ag-ui/client": "0.0.57",
+    "@ag-ui/core": "0.0.57",
+    "@ag-ui/encoder": "0.0.57",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "openai": "^4.77.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
