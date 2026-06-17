@@ -9,12 +9,7 @@ tags: [ "AI", "Agent", "TypeScript" ]
 
 *{{date | readableDate }}*
 
-> **Credit.** This post is a TypeScript implementation of the pattern described in
-> [**"Beyond the Agentic Loop: The Orchestrator Pattern for Multi-Agent Systems"**](https://stackademic.com/blog/beyond-the-agentic-loop-the-orchestrator-pattern-for-multi-agent-systems)
-> by **Amogh Ubale** (Stackademic). The original is Python with generic agents; 
-> here we keep the idea intact and re-theme it
-> as a **shopping assistant** so the three execution modes have something concrete
-> to chew on. All the design credit goes to that article — go read it first.
+This post is a TypeScript implementation of the pattern described in [**"Beyond the Agentic Loop: The Orchestrator Pattern for Multi-Agent Systems"**](https://stackademic.com/blog/beyond-the-agentic-loop-the-orchestrator-pattern-for-multi-agent-systems) by **Amogh Ubale** (Stackademic). The original is Python with generic agents; here we keep the idea intact and re-theme it as a **shopping assistant** so the three execution modes have something concrete to chew on. All the design credit goes to that article — go read it first.
 
 ## The problem: the LLM as a `while` loop
 
