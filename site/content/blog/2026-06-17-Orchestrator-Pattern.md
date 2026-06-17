@@ -1,6 +1,6 @@
 ---
 title: Beyond the Agentic Loop, in TypeScript
-description: Beyond the Agentic Loop, in TypeScript: building a shopping agent with the Orchestrator pattern.
+description: Beyond the Agentic Loop, in TypeScript building a shopping agent with the Orchestrator pattern.
 date: 2026-06-17
 tags: [ "AI", "Agent", "TypeScript" ]
 ---
