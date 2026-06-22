@@ -8,3 +8,6 @@ eleventyNavigation:
 ## About
 
 Another human in tech passionate about .NET, Typescript and AI.
+
+People always ask: "Does AI replace software engineers?"
+Perhaps a better quest would be "What is worthy building?"
