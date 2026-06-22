@@ -9,5 +9,7 @@ eleventyNavigation:
 
 Another human in tech passionate about .NET, Typescript and AI.
 
-> People always ask: "Does AI replace software engineers?"
-> A better question might be: "What is worth building?"
+<div style="margin-top: 1rem; padding: 1rem 1.25rem; border-left: 4px solid #0d6efd; background: #f5f8fa; border-radius: 0.5rem;">
+  <p style="margin: 0 0 0.5rem 0;"><strong>People always ask:</strong> "Does AI replace software engineers?"</p>
+  <p style="margin: 0;"><strong>A better question:</strong> "What is worth building?"</p>
+</div>
