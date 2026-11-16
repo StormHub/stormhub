@@ -101,26 +101,10 @@ Agent Skills minimize overhead via progressive disclosure: the model receives co
 
 | Dimension | MCP Tool per Endpoint | Co-Hosted Skills + Generic HTTP Tool |
 | --- | --- | --- |
-| **What the client learns** | What each operation accepts and returns
-
- | How to orchestrate operations to complete a task
-
- |
-| **Upfront prompt footprint** | Every tool's name, description, and JSON schema
-
- | Compact skill names and descriptions (`skill://index.json`)
-
- |
-| **Tools registered on model** | One per endpoint, growing with the API surface
-
- | Three fixed tools (`load_skill`, `read_skill_resource`, `http_request`)
-
- |
-| **Detailed guidance** | Embedded in tool schemas, sent on every call
-
- | Stored in `SKILL.md` and reference files, loaded on demand
-
- |
+| **What the client learns** | What each operation accepts and returns | How to orchestrate operations to complete a task |
+| **Upfront prompt footprint** | Every tool's name, description, and JSON schema | Compact skill names and descriptions (`skill://index.json`) |
+| **Tools registered on model** | One per endpoint, growing with the API surface | Three fixed tools (`load_skill`, `read_skill_resource`, `http_request`) |
+| **Detailed guidance** | Embedded in tool schemas, sent on every call | Stored in `SKILL.md` and reference files, loaded on demand |
 
 
 ## Host the Skills with the API
