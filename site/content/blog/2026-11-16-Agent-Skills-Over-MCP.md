@@ -241,52 +241,13 @@ The generic `http_request` tool handles root-relative requests (e.g., `/catalog`
 
 ## Skills in Action
 
-Execution flow for *"What laptops do you have, and is either on sale?"*:
+Here is how the agent processes the question *"What laptops do you have, and is either on sale?"* step-by-step:
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant A as App (agent)
-    participant L as OpenAI model
-    participant M as Api /mcp
-    participant H as Api HTTP
-
-    A->>M: read skill://index.json
-    M-->>A: catalog-search, pricing
-    A->>L: question + skill list + 3 tools
-    L-->>A: load_skill("catalog-search")
-    A->>M: read skill://catalog-search/SKILL.md
-    A->>L: SKILL.md
-    L-->>A: read_skill_resource("references/search-behavior.md")
-    A->>M: read skill://catalog-search/references/search-behavior.md
-    A->>L: reference text
-    L-->>A: http_request(GET /catalog?q=laptop)
-    A->>H: GET /catalog?q=laptop
-    A->>L: two laptops
-    L-->>A: load_skill("pricing")
-    A->>M: read skill://pricing/SKILL.md
-    A->>L: SKILL.md
-    L-->>A: http_request(GET /pricing/...) ×2
-    A->>H: GET /pricing/p_laptop_dell, /pricing/p_laptop_mac
-    A->>L: prices and deals
-    L-->>A: final answer
-
-```
-
-1. **Index Discovery:** Model receives only skill names and descriptions from `skill://index.json`.
-
-
-2. **On-Demand Loading:** Model invokes `load_skill("catalog-search")` and fetches reference files as needed.
-
-
-3. **Catalog Search:** Model calls `http_request(GET /catalog?q=laptop)` to retrieve product IDs.
-
-
-4. **Skill Chaining:** Model loads `pricing` skill, using search output IDs to query `/pricing/{productId}`.
-
-
-5. **Formatted Output:** Results match the skill's formatting playbook:
-
+1. **Index Discovery:** At startup, the agent reads `skill://index.json` from the MCP server to discover available skill names and descriptions (`catalog-search` and `pricing`).
+2. **On-Demand Loading:** Recognizing that finding laptops requires searching, the model invokes `load_skill("catalog-search")` to retrieve the full `SKILL.md` instructions and reads nested references like `references/search-behavior.md` as needed.
+3. **Catalog Search:** Following the playbook, the model executes `http_request(GET /catalog?q=laptop)` to fetch matching laptop records and their product IDs (`p_laptop_dell`, `p_laptop_mac`).
+4. **Skill Chaining:** To answer the second half of the question ("is either on sale?"), the model loads the `pricing` skill and uses the product IDs from the search results to call `GET /pricing/p_laptop_dell` and `GET /pricing/p_laptop_mac`.
+5. **Formatted Output:** The model formats the final response according to the pricing skill's output rules:
 
 > We have two laptops:
 > * **Dell XPS 13** — **$899.10**, on sale for **10% off** (list price $999) during the **Summer Sale**
@@ -294,30 +255,17 @@ sequenceDiagram
 > 
 > 
 
-Pricing, discount details, and promos are output according to `pricing/SKILL.md` rules without custom agent code.
-
 ---
 
-## Three Things That Tripped Me Up
-
-* **Attach Providers to Agent, Not Chat Client:** Use `ChatClientAgentOptions.AIContextProviders`. Attaching to the chat client directly causes execution errors for `load_skill`.
-
+## Things That Tripped Me Up
 
 * **Configure Skill Approval:** Set `DisableLoadSkillApproval = true` for trusted first-party servers to prevent tool execution pauses.
-
-
-* **Provide Execution Tools:** Skills provide instructions, not execution. Pair skills with generic tools like `http_request` to enable model action.
-
 
 ---
 
 ## Wrapping Up
 
 API descriptions specify endpoint contracts; Agent Skills define operational workflows. Co-hosting skills within the API web application ensures version alignment, simplifies infrastructure, lowers upfront token consumption, and makes APIs instantly consumable by AI clients.
-
-```
-
-```
 
 
 [Complete sample code](https://github.com/StormHub/stormhub/tree/main/resources/2026-11-16)
