@@ -9,7 +9,7 @@ tags: [ "AI", "Agent", "Skills" ]
 
 *{{date | readableDate }}*
 
-The Microsoft Agent Framework supports discovering skills from Model Context Protocol (MCP) servers in .NET (see [Discover Agent Skills from MCP servers in .NET](https://devblogs.microsoft.com/agent-framework/discover-agent-skills-from-mcp-servers-in-net/))[cite: 4]. This post demonstrates a key practical application: **making web APIs natively consumable by AI clients[cite: 4].**
+The Microsoft Agent Framework supports discovering skills from Model Context Protocol (MCP) servers in .NET (see [Discover Agent Skills from MCP servers in .NET](https://devblogs.microsoft.com/agent-framework/discover-agent-skills-from-mcp-servers-in-net/))[cite: 4]. This post demonstrates a key practical application: **making web APIs natively consumable by AI clients.**
 
 OpenAPI specs and 1:1 MCP tools describe endpoint signatures, but omit multi-step task orchestration[cite: 4]. Agent Skills bridge this gap by publishing task-level playbooks alongside endpoints, enabling skill-aware AI clients to execute complex workflows without hard-coding domain logic[cite: 4].
 
@@ -42,16 +42,11 @@ Exposed directly as an MCP tool, it simply becomes `get_pricing(productId: strin
 
 * **ID Resolution:** Users request products by name ("Dell laptop"), not internal IDs (`p_laptop_dell`).
 
-
 * **Orchestration:** API descriptions do not specify call sequences or parameter flow between endpoints.
-
 
 * **Interpretation:** Business logic (e.g., handling null promotions or formatting discounts) is omitted.
 
-
 * **Search Fallbacks:** Guidance on query formatting and zero-match recovery is missing.
-
-
 
 API surfaces describe **granular operations**; AI clients require **end-to-end tasks**.
 
@@ -91,15 +86,11 @@ Key additions over raw API specifications:
 
 * **Trigger Intent:** Frontmatter metadata tells the model *when* to activate the skill.
 
-
 * **Orchestration Rules:** Instructs the model to resolve product IDs via `catalog-search` before calling `/pricing/{productId}`.
-
 
 * **Output Formatting:** Dictates how to present pricing and discount details to users.
 
-
 * **Progressive Context:** Reference documents (e.g., `references/search-behavior.md`) are loaded on demand.
-
 
 
 The API spec defines the contract; the skill teaches the model how to execute it.
@@ -177,15 +168,11 @@ Co-hosting advantages:
 
 * **Synchronized Deployments:** API changes and skill playbook updates deploy in the same commit.
 
-
 * **Domain Ownership:** API authors maintain the workflow documentation.
-
 
 * **Zero Extra Infrastructure:** MCP routes alongside standard REST endpoints (e.g., `/mcp`). Relative paths resolve seamlessly.
 
-
 * **Backward Compatible:** Standard REST consumers remain unaffected.
-
 
 
 > **Implementation note:** The framework client discovers skills via `skill://index.json`. Use `SkillIndex.cs` to serve this index resource:
