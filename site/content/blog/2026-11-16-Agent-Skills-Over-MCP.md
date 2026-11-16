@@ -13,11 +13,10 @@ The Microsoft Agent Framework supports discovering skills from Model Context Pro
 
 OpenAPI specs and 1:1 MCP tools describe endpoint signatures, but omit multi-step task orchestration[cite: 4]. Agent Skills bridge this gap by publishing task-level playbooks alongside endpoints, enabling skill-aware AI clients to execute complex workflows without hard-coding domain logic[cite: 4].
 
----
 
 ## What an API Description Gives an AI Client
 
-An OpenAPI definition for a pricing endpoint describes parameters and responses[cite: 4]:
+An OpenAPI definition for a pricing endpoint describes parameters and responses:
 
 ```yaml
 /pricing/{productId}:
@@ -50,7 +49,6 @@ Exposed directly as an MCP tool, it simply becomes `get_pricing(productId: strin
 
 API surfaces describe **granular operations**; AI clients require **end-to-end tasks**.
 
----
 
 ## What a Skill Adds
 
@@ -124,7 +122,6 @@ Agent Skills minimize overhead via progressive disclosure: the model receives co
 
  |
 
----
 
 ## Host the Skills with the API
 
@@ -189,8 +186,6 @@ Co-hosting advantages:
 
 ```
 
----
-
 ## An AI Client That Uses Them
 
 The client agent operates without domain-specific code. It connects over MCP, registers skills, and executes calls through a generic HTTP tool sharing the API's `BaseAddress`:
@@ -224,8 +219,6 @@ return chatClient.AsAIAgent(new ChatClientAgentOptions
 
 The generic `http_request` tool handles root-relative requests (e.g., `/catalog`), allowing the same agent to target any skill-enabled API without code modifications.
 
----
-
 ## Skills in Action
 
 Here is how the agent processes the question *"What laptops do you have, and is either on sale?"* step-by-step:
@@ -242,13 +235,10 @@ Here is how the agent processes the question *"What laptops do you have, and is 
 > 
 > 
 
----
 
 ## Things That Tripped Me Up
 
 * **Configure Skill Approval:** Set `DisableLoadSkillApproval = true` for trusted first-party servers to prevent tool execution pauses.
-
----
 
 ## Wrapping Up
 
